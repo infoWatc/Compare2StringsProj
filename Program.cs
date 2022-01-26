@@ -11,26 +11,30 @@ namespace Compare2StringsProj
 {
     class Program
     {
-        static bool IsSame(string text1, string text2)
+        static void IsSame(string text1, string text2)
         {
             text1 = text1.Trim().ToLower();
             text2 = text2.Trim().ToLower();
             if (text1.Length == text2.Length)
             {
-                Console.Write("Same length is true");
+                Console.Write("The length of both strings are equal");
                 for (int i = 0; i < text1.Length - 1; i++)
                 {
                     if (text1[i] != text2[i])
                     {
-                        Console.Write(", but not same characters is ");
-                        return false;
+                        Console.Write(", and both strings are not equal.\n");
+                        Console.WriteLine($"\t{text1}\n \t{text2}");
+                        return;
                     }
                 }
-                Console.Write(" & same Characters is ");
-                return true;
+                Console.Write(" and also, both strings are equal.\n");
+                Console.WriteLine($"\t{text1}\n \t{text2}");
+                return;
+                
             }
-            Console.Write("Length or characters are same is ");
-            return false;           
+            Console.Write("The length of both strings are not equal and also, both strings are not equal.\n");
+            Console.WriteLine($"\t{text1}\n \t{text2}");
+            return;                    
            
         }
         static void Main(string[] args)
@@ -41,9 +45,9 @@ namespace Compare2StringsProj
             string testWord1b = "This is a bunch of words";
             string testWord2b = "This is nonsense-words: kibbers nz biztz";
 
-            Console.WriteLine(IsSame(testWord1, testWord2));
-            Console.WriteLine(IsSame(testWord1, testWord3));
-            Console.WriteLine(IsSame(testWord1b, testWord2b));
+            IsSame(testWord1, testWord2);
+            IsSame(testWord1, testWord3);
+            IsSame(testWord1b, testWord2b);
 
         }
     }
